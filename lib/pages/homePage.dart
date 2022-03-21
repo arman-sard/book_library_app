@@ -180,13 +180,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget buildBooks(Book book) => Material(
-        elevation: 5,
+        elevation: 7,
+        shadowColor: Color.fromARGB(171, 171, 240, 228),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 15),
           decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(color: Colors.grey.shade300, width: 1))
-          ),
+              border: Border(
+                  bottom: BorderSide(color: Colors.grey.shade300, width: 1))),
           child: SizedBox(
             height: 100,
             child: ListTile(
@@ -209,8 +209,7 @@ class _HomePageState extends State<HomePage> {
                             scale: 0.3,
                             child: CircularProgressIndicator(
                                 color: Colors.deepPurple[700])),
-                        errorWidget: (context, url, error) =>
-                            Icon(Icons.error),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
                       ),
                     ),
                   ),

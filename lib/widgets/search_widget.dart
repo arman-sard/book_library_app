@@ -28,7 +28,8 @@ class _SearchWidgetState extends State<SearchWidget> {
     final style = widget.text.isEmpty ? styleHint : styleActive;
 
     return Material(
-      elevation: 5,
+      elevation: 7,
+      shadowColor: Color.fromARGB(70, 187, 250, 245),
       child: Container(
         margin: const EdgeInsets.only(left: 16, top: 60),
         padding: const EdgeInsets.symmetric(horizontal: 15),
