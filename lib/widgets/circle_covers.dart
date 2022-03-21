@@ -14,16 +14,30 @@ class CirculeCover extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          height: 100,
-          width: 100,
-          child: CircleAvatar(
-            radius: 16.0,
-            child: ClipRRect(
-              child: Image.network(imagePath),
-              borderRadius: BorderRadius.circular(50.0),
+        Stack(
+          alignment: Alignment.bottomRight,
+          children: [
+            SizedBox(
+              height: 100,
+              width: 100,
+              child: CircleAvatar(
+                radius: 16.0,
+                child: ClipRRect(
+                  child: Image.network(imagePath),
+                  borderRadius: BorderRadius.circular(50.0),
+                ),
+              ),
             ),
-          ),
+            CircleAvatar(
+              child: IconButton(
+                padding: EdgeInsets.zero,
+                  icon: Icon(                    
+                    Icons.play_arrow_rounded,
+                    size: 38,
+                  ),
+                  onPressed: () {}),
+            ),
+          ],
         ),
         SizedBox(height: 15),
         Text(title, style: Theme.of(context).textTheme.bodyText1),

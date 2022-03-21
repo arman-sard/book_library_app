@@ -51,20 +51,20 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       CirculeCover(
                           title: 'My Book Cover',
-                          author: 'A Lot of authores',
+                          author: 'A lot of authors',
                           imagePath: 'https://picsum.photos/id/101/200/200'),
                       CirculeCover(
                           title: 'My Book Cover',
-                          author: 'A Lot of authores',
+                          author: 'A lot of authors',
                           imagePath: 'https://picsum.photos/id/100/200/200'),
                       CirculeCover(
                           title: 'My Book Cover',
-                          author: 'A Lot of authores',
+                          author: 'A lot of authors',
                           imagePath: 'https://picsum.photos/id/1000/200/200'),
                     ],
                   ),
                 Container(
-                    padding: EdgeInsets.only(left: 15, top: 15),
+                    padding: EdgeInsets.only(left: 15, top: 15, bottom: 5),
                     child: Text(
                       'New',
                       style: Theme.of(context).textTheme.headline6,
