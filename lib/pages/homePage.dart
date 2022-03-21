@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   double fontSize = 0;
   double hightSize = 0;
   bool _isVisible = true;
-  TextStyle purpleFont =
+  TextStyle purpleFont = 
       TextStyle(color: Colors.deepPurple[700], fontWeight: FontWeight.bold);
 
   @override
@@ -107,32 +107,43 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: SizedBox(
+      bottomNavigationBar: Container(
         height: 80,
-        child: BottomNavigationBar(
-          selectedFontSize: 0.0,
-          unselectedFontSize: 0.0,
-          backgroundColor: Colors.blueAccent,
-          iconSize: 25,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined, color: Colors.deepPurple[700]),
-              label: '',
-              backgroundColor: Color.fromARGB(255, 243, 250, 244),
+        color: Color.fromARGB(25, 171, 240, 228),
+        padding: EdgeInsets.only(bottom: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                  side: BorderSide.none,
+                  backgroundColor: Colors.white,
+                  padding: EdgeInsets.all(0),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
+              onPressed: () {},
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 17.0, vertical: 10),
+                child: Row(
+                  children: [
+                    Icon(Icons.home_outlined, color: Colors.green[700]),
+                    SizedBox(width: 5),
+                    Text('Home'),
+                  ],
+                ),
+              ),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.auto_awesome_motion_outlined,
-                  color: Colors.deepPurple),
-              label: '',
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.auto_awesome_motion_outlined),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.explore_outlined, color: Colors.deepPurple),
-              label: '',
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.explore_outlined),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.qr_code, color: Colors.deepPurple),
-              label: '',
-            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.notifications_active_outlined),
+            )
           ],
         ),
       ),
