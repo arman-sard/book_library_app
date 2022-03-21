@@ -21,9 +21,6 @@ class NewBooks extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
-      decoration: BoxDecoration(
-          border: Border(
-              bottom: BorderSide(color: Colors.grey.shade400, width: 1))),
       child: Row(
         children: [
           Padding(
@@ -43,8 +40,7 @@ class NewBooks extends StatelessWidget {
                   ),
                   placeholder: (context, url) => Transform.scale(
                       scale: 0.3,
-                      child: CircularProgressIndicator(
-                          color: Colors.deepPurple[700])),
+                      child: CircularProgressIndicator()),
                   errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
@@ -55,19 +51,15 @@ class NewBooks extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: TextStyle(color: Colors.black)),
+              Text(title, style: Theme.of(context).textTheme.bodyText1),
               SizedBox(width: 20, height: 2),
-              Text(author,
-                  style: TextStyle(
-                      color: Colors.grey,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 13)),
+              Text(author, style: Theme.of(context).textTheme.bodyText2),
               SizedBox(height: 15),
               Row(
                 children: [
-                  Icon(Icons.calendar_today_outlined, size: 16),
+                  Icon(Icons.calendar_today_outlined, size: 16, color: Colors.black,),
                   SizedBox(width: 10),
-                  Text(date)
+                  Text(date, style: Theme.of(context).textTheme.subtitle1)
                 ],
               ),
             ],
@@ -84,7 +76,7 @@ class NewBooks extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child:
-                  Icon(Icons.notifications_none, color: Colors.deepPurple[700]),
+                  Icon(Icons.notifications_none),
             ),
           )
         ],

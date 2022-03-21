@@ -23,9 +23,7 @@ class _HomePageState extends State<HomePage> {
   double fontSize = 0;
   double hightSize = 0;
   bool _isVisible = true;
-  TextStyle purpleFont = 
-      TextStyle(color: Colors.deepPurple[700], fontWeight: FontWeight.bold);
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,11 +35,14 @@ class _HomePageState extends State<HomePage> {
             Visibility(
               visible: _isVisible,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     padding: EdgeInsets.all(15),
-                    child: Row(
-                      children: [Text('Continue', style: purpleFont)],
+                    child: Text(
+                      'Continue',
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                   ),
                   Row(
@@ -62,10 +63,11 @@ class _HomePageState extends State<HomePage> {
                           imagePath: 'https://picsum.photos/id/1000/200/200'),
                     ],
                   ),
-                  Container(
+                Container(
                     padding: EdgeInsets.only(left: 15, top: 15),
-                    child: Row(
-                      children: [Text('New', style: purpleFont)],
+                    child: Text(
+                      'New',
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                   ),
                   Column(
@@ -75,11 +77,13 @@ class _HomePageState extends State<HomePage> {
                           author: 'John Sullivan',
                           imageUrl: 'https://picsum.photos/id/236/200/400',
                           date: '04 Feb 2021'),
+                      Divider(),
                       NewBooks(
                           title: 'Crazy 8\'s',
                           author: 'Jake Knapp',
                           imageUrl: 'https://picsum.photos/id/238/200/400',
                           date: '25 Apr 2021'),
+                      Divider(),
                       NewBooks(
                           title: 'My Book Cover',
                           author: 'A lot of authors',

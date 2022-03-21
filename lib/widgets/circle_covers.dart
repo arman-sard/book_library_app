@@ -26,15 +26,9 @@ class CirculeCover extends StatelessWidget {
           ),
         ),
         SizedBox(height: 15),
-        Text(title),
+        Text(title, style: Theme.of(context).textTheme.bodyText1),
         SizedBox(height: 4),
-        Text(
-          author,
-          style: TextStyle(
-              color: Colors.grey,
-              fontWeight: FontWeight.w400,
-              fontSize: 12),
-        ),
+        Text(author, style: Theme.of(context).textTheme.bodyText2)
       ],
     );
   }

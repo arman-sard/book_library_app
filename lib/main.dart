@@ -18,7 +18,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.deepPurple,
+        iconTheme: const IconThemeData(color: Colors.deepPurple),
+        dividerTheme: const DividerThemeData(space: 10, thickness: 1, color: Color.fromARGB(90, 124, 161, 154), indent: 20, endIndent: 20),
+        textTheme: const TextTheme(
+          bodyText1: TextStyle(color: Colors.black, fontWeight: FontWeight.w400, fontSize: 14),
+          bodyText2: TextStyle(color: Colors.grey, fontWeight: FontWeight.w400, fontSize: 13),
+          subtitle1: TextStyle(color: Colors.black, fontWeight: FontWeight.w400, fontSize: 13),
+          headline6: TextStyle(fontSize: 15, color: Colors.deepPurple, fontWeight: FontWeight.bold),
+          button: TextStyle(fontSize: 12, fontWeight: FontWeight.w400) ,
+        ),
       ),
       home: const HomePage(),
     );
