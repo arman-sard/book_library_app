@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   double hightSize = 0;
   bool _isVisible = true;
   bool _isVisibleSerch = false;
+  bool _validationText = false;
 
   @override
   Widget build(BuildContext context) {
@@ -96,9 +97,12 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(top: hightSize),
-            child: Text(validation, style: TextStyle(fontSize: fontSize)),
+          Visibility(
+            visible: _validationText,
+            child: Padding(
+              padding: EdgeInsets.only(top: 22),
+              child: Text(validation, style: TextStyle(fontSize: 14)),
+            ),
           ),
           Visibility(
             visible: _isVisibleSerch,
@@ -191,12 +195,10 @@ class _HomePageState extends State<HomePage> {
 
         if (query.isNotEmpty && books.isEmpty) {
           validation = 'Keine passenden Treffer gefunden';
-          fontSize = 14;
-          hightSize = 22;
+          _validationText = true;
         } else {
           validation = '';
-          fontSize = 0;
-          hightSize = 0;
+          _validationText = false; 
         }
       },
     );
