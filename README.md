@@ -8,3 +8,6 @@ A new Flutter project.
 - Using the [cached_network_image](https://pub.dev/packages/cached_network_image/install) library to load and cache network images, with placeholder and error widget.
 - Dynamic icon in the search field
 
+Flutter-Sdk Info:
+
+Flutter 2.10.1 • Dart 2.16.1 • DevTools 2.9.2
