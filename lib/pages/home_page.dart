@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:book_library_app/data/book_data.dart';
 import 'package:book_library_app/models/book.dart';
 import 'package:book_library_app/widgets/circle_covers.dart';
@@ -17,11 +15,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final controller = TextEditingController();
-  List<Book> books = [];
-  String query = '';
-  String validation = '';
-  double fontSize = 0;
-  double hightSize = 0;
+  List<Book> _books = [];
+  String _query = '';
+  String _validation = '';
   bool _isVisible = true;
   bool _isVisibleSerch = false;
   bool _validationText = false;
@@ -30,7 +26,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        // mainAxisAlignment: MainAxisAlignment.start,
         children: [
           buildSearch(),
           Visibility(
@@ -38,10 +33,10 @@ class _HomePageState extends State<HomePage> {
             child: Expanded(
               child: ListView(
                 shrinkWrap: true,
-                padding: EdgeInsets.only(top: 0),
+                padding: const EdgeInsets.only(top: 0),
                 children: [
                   Container(
-                    padding: EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(15),
                     child: Text(
                       'Continue',
                       style: Theme.of(context).textTheme.headline6,
@@ -49,8 +44,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: [
+                    children: const [
                       CirculeCover(
                           title: 'My Book Cover',
                           author: 'A lot of authors',
@@ -66,7 +60,8 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 15, top: 15, bottom: 5),
+                    padding:
+                        const EdgeInsets.only(left: 15, top: 15, bottom: 5),
                     child: Text(
                       'New',
                       style: Theme.of(context).textTheme.headline6,
@@ -79,13 +74,13 @@ class _HomePageState extends State<HomePage> {
                           author: 'John Sullivan',
                           imageUrl: 'https://picsum.photos/id/1001/200/300',
                           date: '04 Feb 2021'),
-                      Divider(),
+                      const Divider(),
                       NewBooks(
                           title: 'Crazy 8\'s',
                           author: 'Jake Knapp',
                           imageUrl: 'https://picsum.photos/id/1002/200/300',
                           date: '25 Apr 2021'),
-                      Divider(),
+                      const Divider(),
                       NewBooks(
                           title: 'My Book Cover',
                           author: 'A lot of authors',
@@ -100,8 +95,8 @@ class _HomePageState extends State<HomePage> {
           Visibility(
             visible: _validationText,
             child: Padding(
-              padding: EdgeInsets.only(top: 22),
-              child: Text(validation, style: TextStyle(fontSize: 14)),
+              padding: const EdgeInsets.only(top: 22),
+              child: Text(_validation, style: const TextStyle(fontSize: 14)),
             ),
           ),
           Visibility(
@@ -109,9 +104,9 @@ class _HomePageState extends State<HomePage> {
             child: Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.only(top: 10.0),
-                itemCount: books.length,
+                itemCount: _books.length,
                 itemBuilder: (context, index) {
-                  final book = books[index];
+                  final book = _books[index];
                   return buildBooks(book);
                 },
               ),
@@ -121,8 +116,8 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: Container(
         height: 80,
-        color: Color.fromARGB(25, 171, 240, 228),
-        padding: EdgeInsets.only(bottom: 15),
+        color: const Color.fromARGB(25, 171, 240, 228),
+        padding: const EdgeInsets.only(bottom: 15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -130,7 +125,7 @@ class _HomePageState extends State<HomePage> {
               style: OutlinedButton.styleFrom(
                   side: BorderSide.none,
                   backgroundColor: Colors.white,
-                  padding: EdgeInsets.all(0),
+                  padding: const EdgeInsets.all(0),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8))),
               onPressed: () {},
@@ -140,23 +135,23 @@ class _HomePageState extends State<HomePage> {
                 child: Row(
                   children: [
                     Icon(Icons.home_outlined, color: Colors.green[700]),
-                    SizedBox(width: 5),
-                    Text('Home'),
+                    const SizedBox(width: 5),
+                    const Text('Home'),
                   ],
                 ),
               ),
             ),
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.auto_awesome_motion_outlined),
+              icon: const Icon(Icons.auto_awesome_motion_outlined),
             ),
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.explore_outlined),
+              icon: const Icon(Icons.explore_outlined),
             ),
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.notifications_active_outlined),
+              icon: const Icon(Icons.notifications_active_outlined),
             )
           ],
         ),
@@ -165,7 +160,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget buildSearch() => SearchWidget(
-        text: query,
+        text: _query,
         hintText: 'Titel, Autor:innen, Genres',
         onChanged: searchBooks,
       );
@@ -182,8 +177,8 @@ class _HomePageState extends State<HomePage> {
 
     setState(
       () {
-        this.query = query;
-        query == '' ? this.books = [] : this.books = books;
+        _query = query;
+        query == '' ? _books = [] : _books = books;
 
         if (query.isNotEmpty) {
           _isVisible = false;
@@ -194,11 +189,11 @@ class _HomePageState extends State<HomePage> {
         }
 
         if (query.isNotEmpty && books.isEmpty) {
-          validation = 'Keine passenden Treffer gefunden';
+          _validation = 'Keine passenden Treffer gefunden';
           _validationText = true;
         } else {
-          validation = '';
-          _validationText = false; 
+          _validation = '';
+          _validationText = false;
         }
       },
     );
@@ -206,9 +201,9 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildBooks(Book book) => Material(
         elevation: 7,
-        shadowColor: Color.fromARGB(171, 171, 240, 228),
+        shadowColor: const Color.fromARGB(171, 171, 240, 228),
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           decoration: BoxDecoration(
               border: Border(
                   bottom: BorderSide(color: Colors.grey.shade300, width: 1))),
@@ -221,7 +216,8 @@ class _HomePageState extends State<HomePage> {
                     height: 75,
                     width: 60,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(10.0)),
                       child: CachedNetworkImage(
                         imageUrl: book.urlImage,
                         imageBuilder: (context, imageProvider) => Container(
@@ -232,18 +228,19 @@ class _HomePageState extends State<HomePage> {
                         ),
                         placeholder: (context, url) => Transform.scale(
                             scale: 0.3,
-                            child: CircularProgressIndicator()),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
+                            child: const CircularProgressIndicator()),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
                       ),
                     ),
                   ),
-                  SizedBox(width: 25),
+                  const SizedBox(width: 25),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(book.title),
-                      SizedBox(width: 25, height: 3),
+                      const SizedBox(width: 25, height: 3),
                       Text(book.author,
                           style: TextStyle(
                               fontSize: 13, color: Colors.grey.shade600)),

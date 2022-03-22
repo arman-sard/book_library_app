@@ -1,10 +1,8 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
 
 class CirculeCover extends StatelessWidget {
   const CirculeCover(
-      {required this.title, required this.author, required this.imagePath});
+      {Key? key, required this.title, required this.author, required this.imagePath}) : super(key: key);
 
   final String title;
   final String author;
@@ -31,7 +29,7 @@ class CirculeCover extends StatelessWidget {
             CircleAvatar(
               child: IconButton(
                 padding: EdgeInsets.zero,
-                  icon: Icon(                    
+                  icon: const Icon(                    
                     Icons.play_arrow_rounded,
                     size: 38,
                   ),
@@ -39,9 +37,9 @@ class CirculeCover extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 15),
+        const SizedBox(height: 15),
         Text(title, style: Theme.of(context).textTheme.bodyText1),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         Text(author, style: Theme.of(context).textTheme.bodyText2)
       ],
     );

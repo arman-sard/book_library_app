@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
 class SearchWidget extends StatefulWidget {
@@ -23,35 +21,36 @@ class _SearchWidgetState extends State<SearchWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final styleActive = TextStyle(color: Colors.black);
-    final styleHint = TextStyle(color: Colors.black54);
-    final style = widget.text.isEmpty ? styleHint : styleActive;
+    const _styleActive = TextStyle(color: Colors.black);
+    const _styleHint = TextStyle(color: Colors.black54);
+    final _style = widget.text.isEmpty ? _styleHint : _styleActive;
 
     return Material(
       elevation: 7,
-      shadowColor: Color.fromARGB(70, 187, 250, 245),
-      child: Container(
-        margin: const EdgeInsets.only(left: 16, top: 60),
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: TextField(
-          controller: controller,
-          decoration: InputDecoration(
-            suffixIcon: widget.text.isNotEmpty
-                ? GestureDetector(
-                    child: Icon(Icons.close, color: style.color),
-                    onTap: () {
-                      controller.clear();
-                      widget.onChanged('');
-                      FocusScope.of(context).requestFocus(FocusNode());
-                    },
-                  )
-                : Icon(Icons.search, color: style.color,),
-            hintText: widget.hintText,
-            hintStyle: style,
-            border: InputBorder.none,
+      shadowColor: const Color.fromARGB(70, 187, 250, 245),
+      child: SafeArea(
+        child: Container(
+          padding: const EdgeInsets.only(left: 25, right: 15),
+          child: TextField(
+            controller: controller,
+            decoration: InputDecoration(
+              suffixIcon: widget.text.isNotEmpty
+                  ? GestureDetector(
+                      child: Icon(Icons.close, color: _style.color),
+                      onTap: () {
+                        controller.clear();
+                        widget.onChanged('');
+                        FocusScope.of(context).requestFocus(FocusNode());
+                      },
+                    )
+                  : Icon(Icons.search, color: _style.color,),
+              hintText: widget.hintText,
+              hintStyle: _style,
+              border: InputBorder.none,
+            ),
+            style: _style,
+            onChanged: widget.onChanged,
           ),
-          style: style,
-          onChanged: widget.onChanged,
         ),
       ),
     );

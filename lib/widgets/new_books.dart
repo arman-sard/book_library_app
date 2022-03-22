@@ -1,10 +1,8 @@
-// ignore_for_file: prefer_const_constructors, must_be_immutable
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class NewBooks extends StatelessWidget {
-  NewBooks(
+  const NewBooks(
       {Key? key,
       required this.title,
       required this.author,
@@ -12,59 +10,59 @@ class NewBooks extends StatelessWidget {
       required this.date})
       : super(key: key);
 
-  String title;
-  String author;
-  String imageUrl;
-  String date;
+  final String title;
+  final String author;
+  final String imageUrl;
+  final String date;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10.0),
-            child: SizedBox(
-              height: 110,
-              width: 80,
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                child: CachedNetworkImage(
-                  imageUrl: imageUrl,
-                  imageBuilder: (context, imageProvider) => Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: imageProvider, fit: BoxFit.cover),
-                    ),
+          SizedBox(
+            height: 100,
+            width: 75,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+              child: CachedNetworkImage(
+                imageUrl: imageUrl,
+                imageBuilder: (context, imageProvider) => Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: imageProvider, fit: BoxFit.cover),
                   ),
-                  placeholder: (context, url) => Transform.scale(
-                      scale: 0.3,
-                      child: CircularProgressIndicator()),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
+                placeholder: (context, url) => Transform.scale(
+                    scale: 0.3, child: const CircularProgressIndicator()),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
           ),
-          SizedBox(width: 25),
+          const SizedBox(width: 25),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(title, style: Theme.of(context).textTheme.bodyText1),
-              SizedBox(width: 20, height: 2),
+              const SizedBox(width: 20, height: 2),
               Text(author, style: Theme.of(context).textTheme.bodyText2),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               Row(
                 children: [
-                  Icon(Icons.calendar_today_outlined, size: 16, color: Colors.black,),
-                  SizedBox(width: 10),
+                  const Icon(
+                    Icons.calendar_today_outlined,
+                    size: 16,
+                    color: Colors.black,
+                  ),
+                  const SizedBox(width: 10),
                   Text(date, style: Theme.of(context).textTheme.subtitle1)
                 ],
               ),
             ],
           ),
-          Spacer(),
+          const Spacer(),
           Container(
             decoration: BoxDecoration(
               border: Border.all(
@@ -73,10 +71,9 @@ class NewBooks extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child:
-                  Icon(Icons.notifications_none),
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(Icons.notifications_none),
             ),
           )
         ],
