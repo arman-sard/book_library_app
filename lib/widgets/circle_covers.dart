@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 
 class CirculeCover extends StatelessWidget {
   const CirculeCover(
-      {Key? key, required this.title, required this.author, required this.imagePath}) : super(key: key);
+      {Key? key,
+      required this.title,
+      required this.author,
+      required this.imagePath})
+      : super(key: key);
 
   final String title;
   final String author;
@@ -28,8 +32,8 @@ class CirculeCover extends StatelessWidget {
             ),
             CircleAvatar(
               child: IconButton(
-                padding: EdgeInsets.zero,
-                  icon: const Icon(                    
+                  padding: EdgeInsets.zero,
+                  icon: const Icon(
                     Icons.play_arrow_rounded,
                     size: 38,
                   ),
