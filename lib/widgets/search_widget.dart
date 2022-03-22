@@ -52,7 +52,10 @@ class _SearchWidgetState extends State<SearchWidget> {
                         FocusScope.of(context).requestFocus(FocusNode());
                       },
                     )
-                  : Icon(Icons.search, color: _style.color,),
+                  : Icon(
+                      Icons.search,
+                      color: _style.color,
+                    ),
               hintText: widget.hintText,
               hintStyle: _style,
               border: InputBorder.none,
