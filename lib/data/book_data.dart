@@ -3,13 +3,13 @@ import 'package:book_library_app/models/book.dart';
 final allBooks = <Book>[
   const Book(
       id: '1',
-      author: 'Ardi Evans',
-      title: 'Modern Buildings',
+      author: 'John Sullivan',
+      title: 'More Then Words',
       urlImage: 'https://picsum.photos/id/1001/200/300'),
   const Book(
     id: '2',
-    author: 'Lerone Pieters',
-    title: 'Busy City Life',
+    author: 'Jake Knapp',
+    title: 'Crazy 8\'s',
     urlImage: 'https://picsum.photos/id/1002/200/300',
   ),
   const Book(

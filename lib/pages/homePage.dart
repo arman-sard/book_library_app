@@ -77,13 +77,13 @@ class _HomePageState extends State<HomePage> {
                       NewBooks(
                           title: 'More Then Words',
                           author: 'John Sullivan',
-                          imageUrl: 'https://picsum.photos/id/236/200/400',
+                          imageUrl: 'https://picsum.photos/id/1001/200/300',
                           date: '04 Feb 2021'),
                       Divider(),
                       NewBooks(
                           title: 'Crazy 8\'s',
                           author: 'Jake Knapp',
-                          imageUrl: 'https://picsum.photos/id/238/200/400',
+                          imageUrl: 'https://picsum.photos/id/1002/200/300',
                           date: '25 Apr 2021'),
                       Divider(),
                       NewBooks(
