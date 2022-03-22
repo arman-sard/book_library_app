@@ -18,6 +18,13 @@ class SearchWidget extends StatefulWidget {
 
 class _SearchWidgetState extends State<SearchWidget> {
   final controller = TextEditingController();
+  FocusNode focusNode = FocusNode();
+
+  @override
+  void dispose() {
+    focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +39,14 @@ class _SearchWidgetState extends State<SearchWidget> {
         child: Container(
           padding: const EdgeInsets.only(left: 25, right: 15),
           child: TextField(
+            focusNode: focusNode,
             controller: controller,
             decoration: InputDecoration(
               suffixIcon: widget.text.isNotEmpty
                   ? GestureDetector(
                       child: Icon(Icons.close, color: _style.color),
                       onTap: () {
+                        focusNode.requestFocus();
                         controller.clear();
                         widget.onChanged('');
                         FocusScope.of(context).requestFocus(FocusNode());
