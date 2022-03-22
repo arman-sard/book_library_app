@@ -23,20 +23,21 @@ class _HomePageState extends State<HomePage> {
   double fontSize = 0;
   double hightSize = 0;
   bool _isVisible = true;
-  
+  bool _isVisibleSerch = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            buildSearch(),
-            Visibility(
-              visible: _isVisible,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+      body: Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          buildSearch(),
+          Visibility(
+            visible: _isVisible,
+            child: Expanded(
+              child: ListView(
+                shrinkWrap: true,
+                padding: EdgeInsets.only(top: 0),
                 children: [
                   Container(
                     padding: EdgeInsets.all(15),
@@ -63,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                           imagePath: 'https://picsum.photos/id/1000/200/200'),
                     ],
                   ),
-                Container(
+                  Container(
                     padding: EdgeInsets.only(left: 15, top: 15, bottom: 5),
                     child: Text(
                       'New',
@@ -94,11 +95,14 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(top: hightSize),
-              child: Text(validation, style: TextStyle(fontSize: fontSize)),
-            ),
-            Expanded(
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: hightSize),
+            child: Text(validation, style: TextStyle(fontSize: fontSize)),
+          ),
+          Visibility(
+            visible: _isVisibleSerch,
+            child: Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.only(top: 10.0),
                 itemCount: books.length,
@@ -108,13 +112,13 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       bottomNavigationBar: Container(
         height: 80,
         color: Color.fromARGB(25, 171, 240, 228),
-        padding: EdgeInsets.only(bottom: 20),
+        padding: EdgeInsets.only(bottom: 15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -123,10 +127,12 @@ class _HomePageState extends State<HomePage> {
                   side: BorderSide.none,
                   backgroundColor: Colors.white,
                   padding: EdgeInsets.all(0),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8))),
               onPressed: () {},
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 17.0, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 17.0, vertical: 10),
                 child: Row(
                   children: [
                     Icon(Icons.home_outlined, color: Colors.green[700]),
@@ -177,8 +183,10 @@ class _HomePageState extends State<HomePage> {
 
         if (query.isNotEmpty) {
           _isVisible = false;
+          _isVisibleSerch = true;
         } else {
           _isVisible = true;
+          _isVisibleSerch = false;
         }
 
         if (query.isNotEmpty && books.isEmpty) {
@@ -222,8 +230,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         placeholder: (context, url) => Transform.scale(
                             scale: 0.3,
-                            child: CircularProgressIndicator(
-                                color: Colors.deepPurple[700])),
+                            child: CircularProgressIndicator()),
                         errorWidget: (context, url, error) => Icon(Icons.error),
                       ),
                     ),
