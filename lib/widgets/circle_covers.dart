@@ -41,9 +41,9 @@ class CirculeCover extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 15),
+        const SizedBox(height: 10),
         Text(title, style: Theme.of(context).textTheme.bodyText1),
-        const SizedBox(height: 4),
+        const SizedBox(height: 3),
         Text(author, style: Theme.of(context).textTheme.bodyText2)
       ],
     );

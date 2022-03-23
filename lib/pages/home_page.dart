@@ -36,7 +36,8 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.only(top: 0),
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(15),
+                    padding:
+                        const EdgeInsets.only(top: 15, left: 15, bottom: 18),
                     child: Text(
                       'Continue',
                       style: Theme.of(context).textTheme.headline6,
@@ -116,7 +117,7 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: Container(
         height: 80,
-        color: const Color.fromARGB(25, 171, 240, 228),
+        color: Theme.of(context).primaryColorLight,
         padding: const EdgeInsets.only(bottom: 15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -127,16 +128,19 @@ class _HomePageState extends State<HomePage> {
                   backgroundColor: Colors.white,
                   padding: const EdgeInsets.all(0),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8))),
+                      borderRadius: BorderRadius.circular(10))),
               onPressed: () {},
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 17.0, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 9),
                 child: Row(
                   children: [
-                    Icon(Icons.home_outlined, color: Colors.green[700]),
+                    Icon(
+                      Icons.home_outlined,
+                      color: Theme.of(context).highlightColor,
+                    ),
                     const SizedBox(width: 5),
-                    const Text('Home'),
+                    Text('Home', style: Theme.of(context).textTheme.headline5),
                   ],
                 ),
               ),
@@ -201,7 +205,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildBooks(Book book) => Material(
         elevation: 7,
-        shadowColor: const Color.fromARGB(171, 171, 240, 228),
+        shadowColor: Theme.of(context).shadowColor,
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           decoration: BoxDecoration(
@@ -213,8 +217,8 @@ class _HomePageState extends State<HomePage> {
               title: Row(
                 children: [
                   SizedBox(
-                    height: 75,
-                    width: 60,
+                    height: 65,
+                    width: 55,
                     child: ClipRRect(
                       borderRadius:
                           const BorderRadius.all(Radius.circular(10.0)),

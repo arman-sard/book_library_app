@@ -28,8 +28,8 @@ class _SearchWidgetState extends State<SearchWidget> {
 
   @override
   Widget build(BuildContext context) {
-    const _styleActive = TextStyle(color: Colors.black);
-    const _styleHint = TextStyle(color: Colors.black54);
+    final _styleActive = Theme.of(context).textTheme.headline3;
+    final _styleHint = Theme.of(context).textTheme.headline4;
     final _style = widget.text.isEmpty ? _styleHint : _styleActive;
 
     return Material(
@@ -40,11 +40,16 @@ class _SearchWidgetState extends State<SearchWidget> {
           padding: const EdgeInsets.only(left: 25, right: 15),
           child: TextField(
             focusNode: focusNode,
+            cursorWidth: 1,
+            cursorHeight: 20,
             controller: controller,
+            strutStyle: const StrutStyle(height: 1.8),
+            textAlignVertical: TextAlignVertical.center,
+            keyboardType: TextInputType.text,
             decoration: InputDecoration(
               suffixIcon: widget.text.isNotEmpty
                   ? GestureDetector(
-                      child: Icon(Icons.close, color: _style.color),
+                      child: Icon(Icons.close, color: _style?.color),
                       onTap: () {
                         focusNode.requestFocus();
                         controller.clear();
@@ -54,7 +59,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                     )
                   : Icon(
                       Icons.search,
-                      color: _style.color,
+                      color: _style?.color,
                     ),
               hintText: widget.hintText,
               hintStyle: _style,

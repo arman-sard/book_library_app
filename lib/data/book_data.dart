@@ -20,13 +20,13 @@ final allBooks = <Book>[
   ),
   const Book(
       id: '4',
-      author: 'Riccardo Andolfo',
-      title: 'Vast Deserts',
+      author: 'Rupert Carter',
+      title: 'The Tiny Dragon',
       urlImage: 'https://picsum.photos/id/1004/200/300'),
   const Book(
     id: '5',
-    author: 'Miguel Arguibide',
-    title: 'Parkour',
+    author: 'Storyways Original & Rupert Cartet',
+    title: 'The Tiny Dragon - Part 2',
     urlImage: 'https://picsum.photos/id/1005/200/300',
   ),
   const Book(
